@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Gustavo Viea
  * @version 2024-04-20
  */
-public class Aranha extends Actor
+public class Aranha extends Inseto
 {
     /**
      * Act - do whatever the Aranha wants to do. This method is called whenever
@@ -21,5 +21,6 @@ public class Aranha extends Actor
             //Adiciona aleatóriamente de -45° a 45° para rotacionar.
             turn(Greenfoot.getRandomNumber(91)-45);
         }
+        verificarCanto();
     }
 }
