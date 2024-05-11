@@ -13,6 +13,7 @@ public class Abelha extends Actor
     //campos ou fields
     public int vidas = 0;
     public int score = 0;
+    public int imgIdx = 0;
     //Criando um campo do tipo conjunto de imagens.
     private GreenfootImage[] imagens;
     
@@ -34,6 +35,8 @@ public class Abelha extends Actor
     {
         // Add your action code here.
         move(1);
+        //animação da abelha batendo asas.
+        trocarImagem();
         // Se teclar para a esquerda, gira -10°.
         if (Greenfoot.isKeyDown("left")){
             turn(-10);
@@ -51,7 +54,7 @@ public class Abelha extends Actor
         //mostrando quantas vidas tem a abelha
         mostrarVidas();
         // mostrando o score
-        mostrarScore();
+        //mostrarScore();
     }
     /**
      * Método que verifica se está na direita do mundo
@@ -112,9 +115,11 @@ public class Abelha extends Actor
             //remove a mosca tocada
             removeTouching(Mosca.class);
             //tocar Slarp
-            //Greenfoot.playSound("slarp.wav");
+            Greenfoot.playSound("slarp.wav");
             //Aumentar o Score
-            score += PONTOS;
+            //score += PONTOS;
+            //colocando score no mundo
+            ((BeeWorld) getWorld()).addScore(PONTOS);
             //adicionando uma mosca nova no mundo
             int pX = Greenfoot.getRandomNumber(getWorld().getWidth());
             int pY = Greenfoot.getRandomNumber(getWorld().getHeight());
@@ -129,7 +134,7 @@ public class Abelha extends Actor
     public void capituradaPelaAranha(){
         if(isTouching(Aranha.class)){
             //tocar ouch
-            //Greenfoot.playSound("ouch,wav");
+            Greenfoot.playSound("ouch.wav");
             int pX = Greenfoot.getRandomNumber(getWorld().getWidth());
             int pY = Greenfoot.getRandomNumber(getWorld().getHeight());
             setLocation(pX, pY);
@@ -151,6 +156,11 @@ public class Abelha extends Actor
      */
     public void mostrarScore(){
         getWorld().showText("Score"+ score, 700, 20);
+    }
+    
+    public void trocarImagem(){
+        setImage(imagens[imgIdx]);
+        imgIdx = (imgIdx + 1) % 4;
     }
 }
 

@@ -24,8 +24,8 @@ public class Nave extends Actor
         }
         //verificando se foi teclado a barra de espaços, criamos a bala
         if( Greenfoot.isKeyDown("space")){
-            getWorld().addObject(new Bala(),getX(),getY()-60);
-            
+            //getWorld().addObject(new Bala(),getX(),getY()-45);
+            ((SpaceInvadersWorld) getWorld()).criarBala(getX(), getY()-45);
         }
     }
 }
