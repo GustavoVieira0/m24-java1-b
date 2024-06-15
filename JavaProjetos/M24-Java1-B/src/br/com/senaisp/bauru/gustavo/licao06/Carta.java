@@ -19,14 +19,14 @@ public class Carta {
 	}
 	@Override
 	public String toString() {
-		String txt = "┌───────┐\n"+//1
-					 "│##     │\n"+//2
-					 "│   §   │\n"+//3
-					 "│     ##│\n"+//4
-					 "└───────┘\n";	//5
-		txt = txt.replaceFirst("##", numero);
+		String txt = "┌─────┐\n"+//1
+					 "│##   │\n"+//2
+					 "│  §  │\n"+//3
+					 "│   ##│\n"+//4
+					 "└─────┘\n";	//5
+		txt = txt.replaceFirst("##", numero + (numero.equals("10") ? "" : " "));
 		txt = txt.replace("§", naipe);
-		txt = txt.replaceFirst("##", numero);
+		txt = txt.replaceFirst("##",(numero.equals("10") ? "" : " ") + numero);
 	   	return txt;
 	}
 }
