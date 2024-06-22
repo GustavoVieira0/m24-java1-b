@@ -13,7 +13,11 @@ public class Baralho {
 		for(int np =1;np<=Carta.NAIPES.length;np++) {
 			for(int nm = 1;nm<=Carta.NUMEROS.length;nm++) {
 				int idx = (np-1) * Carta.NUMEROS.length +(nm-1);
-				cartas[idx] = new Carta(np,nm);
+				try {
+					cartas[idx] = new Carta(np,nm);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				cartaUsada[idx] = false;
 			}
 		}
